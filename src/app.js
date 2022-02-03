@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const exphds = require('express-handlebars');
-const port = 5000;
 const admin = require('./routes/admin');
 const user = require('./routes/default');
 const morgan = require('morgan');
@@ -69,8 +68,8 @@ app.set('view engine', '.handlebars');
 
 
 
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+app.listen(5000, () => {
+    console.log(`Server running on http://localhost:5000`);
 })
 
 
