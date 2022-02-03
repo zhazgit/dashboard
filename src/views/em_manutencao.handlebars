@@ -1,0 +1,71 @@
+                {{>navigation}}    
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Ordens de Serviço</h1>
+                    
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                         {{#if text}}
+                            <h6 class="m-0 font-weight-bold text-primary">Em manutenção - Em bancada {{text}}
+                            <button type="button" class="btn btn-warning"><i class="fas fa-exclamation-triangle fa-1x"></i> {{text}}</button>
+                            </h6>                            
+                         {{else}}
+                            <h6 class="m-0 font-weight-bold text-primary">Em manutenção - Em bancada </h6>
+                         {{/if}}   
+                            
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>OS</th>
+                                            <th>Número Série</th>
+                                            <th>Filial</th>
+                                            <th>Equipamento</th>
+                                            <th>Data Entrada</th>
+                                            <th>Data Movimento</th>
+                                            <th>Estágio</th>                                            
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>OS</th>
+                                            <th>Número Série</th>
+                                            <th>Filial</th>
+                                            <th>Equipamento</th>
+                                            <th>Data Entrada</th>
+                                            <th>Data Movimento</th>
+                                            <th>Estágio</th>                                            
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>                                     
+                                        {{#each dados.dado}} 
+                                        <tr>       
+                                        <td>{{os}}</td>                                        
+                                        <td>{{ns}}</td>
+                                        <td>{{nome}}</td>
+                                        <td>{{equipamento}}</td>
+                                        <td>{{dataEntrada}}</td>
+                                        <td>{{dataMovimento}}</td>
+                                        <td>{{estagio}}</td>    
+                                        </tr>       
+                                        {{/each}}                                    
+                                       
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->           
+        </div>
+       {{>footer}}

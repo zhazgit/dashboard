@@ -1,0 +1,716 @@
+      
+{{>navigation}}
+                <p id="jan" hidden>{{jan}}</p>
+                <p id="fev" hidden>{{fev}}</p>
+                <p id="mar" hidden>{{mar}}</p>
+                <p id="abr" hidden>{{abr}}</p>
+                <p id="mai" hidden>{{mai}}</p>
+                <p id="jun" hidden>{{jun}}</p>
+                <p id="jul" hidden>{{jul}}</p>
+                <p id="ago" hidden>{{ago}}</p>
+                <p id="set" hidden>{{set}}</p>
+                <p id="out" hidden>{{out}}</p>
+                <p id="nov" hidden>{{nov}}</p>
+                <p id="dez" hidden>{{dez}}</p>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    {{#each data}}
+                    {{OSID}}
+                    {{/each}}
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Painel</h1>                                       
+                    </div>  
+
+                    <div class="row">
+                        <div class="col-xl-8 col-md-8 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Dados Totais de equipamentos finalizados
+                                        </div>
+                                        </div>
+                                    <hr>                                    
+
+                                    <div class="row no-gutters align-items-center">                                                                                                        
+                                        <div class="col mr-2" >
+                                            <div class="text-center" style="width: 80px; hight: 80px;" >
+                                                <span class="badge badge-pill badge-primary">Coletores</span>
+                                                 <div class="text-center" id="test"></div>
+                                                 <p class="badge badge-pill badge-dark text-center">{{totalPColetor}} %</p><br>
+                                                 <h3 class="badge badge-light">Total: <br>                                                 
+                                                 <h3 class="badge badge-primary text-center">{{totalColetor}}
+                                                 </h3>                                                                                                                                 
+                                            </div>
+                                                                                
+                                        </div>
+
+                                         <div class="col mr-2" >
+                                            <div class="text-center" style="width: 80px; hight: 80px;">
+                                                <span class="badge badge-pill badge-primary">Leitores</span>
+                                                <div class="text-center" id="test2"></div>
+                                                <p class="badge badge-pill badge-dark text-center">{{totalPLeitor}} %</p><br>
+                                                <h3 class="badge badge-light">Total: <br>
+                                                <h3 class="badge badge-pill badge-primary text-center">{{totalLeitor}}</h3>                                                  
+                                            </div>                                    
+                                        </div>
+
+                                         <div class="col mr-2" >
+                                            <div class="text-center" style="width: 80px; hight: 80px;" >
+                                                <span class="badge badge-pill badge-primary">Impressoras</span>
+                                                <div class="text-center" id="test3"></div>
+                                                <p class="badge badge-pill badge-dark text-center">{{totalPImpressora}} %</p><br>
+                                                <h3 class="badge badge-light">Total: <br>
+                                                <h3 class="badge badge-pill badge-primary text-center">{{totalImpressora}}</h3>                                                    
+                                            </div>                                    
+                                        </div>
+
+                                         <div class="col mr-2" >
+                                            <div class="text-center" style="width: 80px; hight: 80px;" >
+                                                <span class="badge badge-pill badge-primary">Busca Preço</span>
+                                                <div class="text-center" id="test4"></div>
+                                                <p class="badge badge-pill badge-dark text-center">{{totalPBuscaPreco}} %</p><br>
+                                                <h3 class="badge badge-light">Total: <br>
+                                                <h3 class="badge badge-pill badge-primary text-center">{{totalBuscaPreco}}</h3>                                                   
+                                            </div>                                    
+                                        </div>
+
+                                         <div class="col mr-2" >
+                                            <div class="text-center" style="width: 80px; hight: 80px;">
+                                                <span class="badge badge-pill badge-primary">Outros</span>
+                                                <div class="text-center" id="test5"></div>
+                                                <p class="badge badge-pill badge-dark text-center">{{totalPOutros}} %</p><br>
+                                                <h3 class="badge badge-light">Total: <br>
+                                                <h3 class="badge badge-pill badge-primary text-center">{{totalOutros}}</h3>                                                    
+                                            </div>                                    
+                                        </div>
+                                            <div class="col mr-2"> 
+                                            <img src="/img/dash1.gif" alt="" srcset="" width="150px" height="150px">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <h3 class="badge badge-pill badge-dark text-center">Total Geral: </h3>
+                                                </div>
+                                                <div class="col text-right">
+                                                    <p class="badge badge-pill badge-primary text-center">{{totalFinalizada}}</p>
+                                                </div>                                                
+                                            </div>                                       
+                                        </div>
+                                  
+                                    </div>        
+                                                                        
+                                   
+                                    <div class="alert alert-primary" role="alert"> 
+                                    <div class="row no-gutters align-items-center">    
+                                    <div class="col mr-2 text-center">                                                           
+                                    <a href="#" class="alert-link">Itapevi   </a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">  
+                                    {{totalItapeviColetor}} <br>                           
+                                    <a href="#" class="alert-link">Coletores</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                     {{totalItapeviLeitor}} <br>    
+                                    <a href="#" class="alert-link">Leitores</a> 
+                                     </div>                                      
+                                    <div class="col mr-2 text-center">
+                                    {{totalItapeviImpressora}} <br>    
+                                    <a href="#" class="alert-link">Impressoras</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalItapeviBP}} <br>    
+                                    <a href="#" class="alert-link">Busca Preço</a>  
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalItapeviOutro}} <br>    
+                                    <a href="#" class="alert-link">Outros</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalFinalizadaItapevi}}<br>    
+                                    <a href="#" class="alert-link">Total</a> 
+                                    </div>
+                                    </div>
+                                    </div>
+                                    
+                                  
+
+                                    <div class="alert alert-primary" role="alert">
+                                    <div class="row no-gutters align-items-center">    
+                                    <div class="col mr-2 text-center">     
+                                    <a href="#" class="alert-link">Osasco</a>
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalOsascoColetor}} <br>      
+                                    <a href="#" class="alert-link">Coletores</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalOsascoLeitor}} <br>      
+                                    <a href="#" class="alert-link">Leitores</a> 
+                                    </div> 
+                                    <div class="col mr-2 text-center"> 
+                                    {{totalOsascoImpressora}} <br>      
+                                    <a href="#" class="alert-link">Impressoras</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalOsascoBP}} <br>       
+                                    <a href="#" class="alert-link">Busca Preço</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalOsascoOutro}} <br>       
+                                    <a href="#" class="alert-link">Outros</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalFinalizadaOsasco}} <br>     
+                                    <a href="#" class="alert-link">Total</a> 
+                                    </div> 
+                                    </div>
+                                    </div>
+
+                                    <div class="alert alert-primary" role="alert">
+                                    <div class="row no-gutters align-items-center">    
+                                    <div class="col mr-2 text-center">     
+                                    <a href="#" class="alert-link">Seropedica</a>
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalSeropedicaColetor}} <br>      
+                                    <a href="#" class="alert-link">Coletores</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalSeropedicaLeitor}} <br>
+                                    <a href="#" class="alert-link">Leitores</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalSeropedicaImpressora}}<br>    
+                                    <a href="#" class="alert-link">Impressoras</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalSeropedicaBP}}<br>    
+                                    <a href="#" class="alert-link">Busca Preço</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalSeropedicaOutro}}<br>   
+                                    <a href="#" class="alert-link">Outros</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalFinalizadaSeropedica}}<br>   
+                                    <a href="#" class="alert-link">Total</a>  
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="alert alert-primary" role="alert">
+                                    <div class="row no-gutters align-items-center">    
+                                    <div class="col mr-2 text-center">     
+                                    <a href="#" class="alert-link">Cajamar</a>
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalCajamarColetor}}  <br>
+                                    <a href="#" class="alert-link">Coletores</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalCajamarLeitor}}   <br>
+                                    <a href="#" class="alert-link">Leitores</a>  
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalCajamarImpressora}}  <br>
+                                    <a href="#" class="alert-link">Impressoras</a> 
+                                    </div>  
+                                    <div class="col mr-2 text-center">
+                                    {{totalCajamarBP}} <br>
+                                    <a href="#" class="alert-link">Busca Preço</a>  
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalCajamarOutro}}  <br>
+                                    <a href="#" class="alert-link">Outros</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalFinalizadaCajamar}}  <br>
+                                    <a href="#" class="alert-link">Total</a>  
+                                    </div>
+                                    </div> 
+                                    </div>
+
+                                     <div class="alert alert-primary" role="alert">
+                                    <div class="row no-gutters align-items-center">    
+                                    <div class="col mr-2 text-center">       
+                                    <a href="#" class="alert-link">C. S. Agostinho  </a>
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalCSAColetor}} <br>     
+                                    <a href="#" class="alert-link">Coletores</a>  
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalCSALeitor}} <br>
+                                    <a href="#" class="alert-link">Leitores</a> 
+                                    </div> 
+                                    <div class="col mr-2 text-center">
+                                    {{totalCSAImpressora}}  <br>    
+                                    <a href="#" class="alert-link">Impressoras</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center"> 
+                                    {{totalCSABP}}    <br> 
+                                    <a href="#" class="alert-link">Busca Preço</a>  
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalCSAOutro}} <br>     
+                                    <a href="#" class="alert-link">Outros</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalFinalizadaCSA}}  <br>   
+                                    <a href="#" class="alert-link">Total</a>  
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="alert alert-primary" role="alert">
+                                    <div class="row no-gutters align-items-center">    
+                                    <div class="col mr-2 text-center">     
+                                    <a href="#" class="alert-link">Uberlândia</a>
+                                    </div>
+                                    <div class="col mr-2 text-center"> 
+                                    {{totalUberlandiaColetor}}  <br>
+                                    <a href="#" class="alert-link">Coletores</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalUberlandiaLeitor}}   <br>
+                                    <a href="#" class="alert-link">Leitores</a>  
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalUberlandiaImpressora}}   <br>
+                                    <a href="#" class="alert-link">Impressoras</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalUberlandiaBP}}   <br>
+                                    <a href="#" class="alert-link">Busca Preço</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalUberlandiaOutro}}  <br>
+                                    <a href="#" class="alert-link">Outros</a> 
+                                    </div>
+                                    <div class="col mr-2 text-center">
+                                    {{totalFinalizadaUberlandia}} <br>  
+                                    <a href="#" class="alert-link">Total</a> 
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                     
+                        
+
+
+                        <div class="col-xl-4 col-md-4 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                            Equipamentos aguardando chegada  
+                                          <i class="fas fa-truck fa-1x text-primary-300"></i>                                            
+                                        </div>
+                                    </div>
+                                <hr>                               
+
+                                <div class="row">
+                                    <div class="col-xl-4 col-md-1 mb-1">
+                                        
+                                        <div class="p-3 mb-2 bg-primary text-white text-center rounded">
+                                        <div class="text-center"><h4 class="count">{{totalLeitorAC}}</h4></div>        
+                                            Leitores </div>         
+                                    </div>                             
+                                    <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="p-3 mb-2 bg-primary text-white text-center rounded">
+                                            <div class="text-center"><h4 class="count">{{totalColetorAC}}</h4></div>
+                                            Coletores </div>         
+                                    </div>                                 
+                                  
+                                    <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="p-3 mb-2 bg-primary text-white text-center rounded">
+                                        <div class="text-center"><h4 class="count">{{totalImpressoraAC}}</h4></div>    
+                                            Impressoras </div>         
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="p-3 mb-2 bg-primary text-white text-center rounded">
+                                        <div class="text-center"><h4 class="count">{{totalBuscaPrecoAC}}</h4></div>
+                                            B. Preço </div>         
+                                    </div>                      
+                                    <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="p-3 mb-2 bg-primary text-white text-center rounded">
+                                        <div class="text-center"><h4 class="count">{{totalOutrosAC}}</h4></div>
+                                            Outros </div>         
+                                    </div>                                                        
+                                    <div class="col-xl-4 col-md-1 mb-1 text-center">                                       
+                                        <div class="p-3 mb-2 bg-primary text-white rounded">
+                                             <div class="text-center"><h4 class="count">{{totalGeralAC}}</h4></div>
+                                             Total</div>         
+                                    </div>
+                                </div> 
+                                <div class="alert alert-primary" role="alert">
+                                 Itapevi <a href="#" class="alert-link">{{totalAguardandoChegadaItapevi }}</a> equipamentos.
+                                </div> 
+                                <div class="alert alert-primary" role="alert">
+                                 Osasco <a href="#" class="alert-link">{{totalAguardandoChegadaOsasco }}</a> equipamentos.
+                                </div>  
+                                <div class="alert alert-primary" role="alert">
+                                 Seropedica <a href="#" class="alert-link">{{totalAguardandoChegadaSeropedica}}</a> equipamentos.
+                                </div>  
+                                <div class="alert alert-primary" role="alert">
+                                 Cajamar <a href="#" class="alert-link">{{totalAguardandoChegadaCajamar}}</a> equipamentos.
+                                </div>  
+                                <div class="alert alert-primary" role="alert">
+                                 C. S. Agostinho <a href="#" class="alert-link">{{totalAguardandoChegadaCSA}}</a> equipamentos.
+                                </div>  
+                                <div class="alert alert-primary" role="alert">
+                                 Uberlândia <a href="#" class="alert-link">{{totalAguardandoChegadaUberlandia }}</a> equipamentos.
+                                </div>                   
+                        </div>
+                         
+                        </div>                       
+                        </div>                         
+                        </div>         
+
+
+
+
+                                    
+
+                    <!-- Content Row -->
+                    <div class="row">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Aguardando Vistoria</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAguardandoVistoria">{{totalAguardandoVistoria}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Vistoriados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalVistoriado">{{totalVistoriado}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-check fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Pending Requests Card Example -->
+                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-dark shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                Aguardando Aprovação</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAguardandoAprovacao">{{totalAguardandoAprovacao}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Pending Requests Card Example -->
+                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Aprovados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAprovado">{{totalAprovado}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-handshake fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Em Manutenção</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalEmManutencao">{{totalEmManutencao}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-tools fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Manutenção Concluida</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalManutencaoConcluida">{{totalManutencaoConcluida}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-thumbs-up fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>              
+
+
+                        <!-- Pending Requests Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Reprovados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalReprovado">{{totalReprovado}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-thumbs-down fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <!-- Pending Requests Card Example -->
+                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Expedição</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalExpedicao">{{totalExpedicao}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-box-open fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <!-- Content Row -->
+
+                    <div class="row">
+                     <div class="col-xl-4 col-lg-5">
+                            <div class="card shadow mb-4">
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-primary">Dados Atuais</h6>                                    
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4 pb-2">
+                                        <canvas id="myPieChart"></canvas>
+                                    </div>
+                                    <hr>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle" style="color: #7B68EE;"></i> Ag. Vistoria
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle " style="color: #9370DB;"></i> Vistoriados
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle " style="color: #8A2BE2;"></i> Ag. Aprovação
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle " style="color: #00FF7F;"></i> Aprovados
+                                        </span>
+                                    </div>
+                                    <div class="mt-4 text-center small">
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle " style="color: #9400D3;"></i> Em Manutenção
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle " style="color: #A020F0;" ></i> Man. Concluida
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle " style="color: #DC143C;"></i> Reprovados
+                                        </span>
+                                        <span class="mr-2">
+                                            <i class="fas fa-circle " style="color: #8B008B;"></i> Expedição
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+
+                          <!-- Bar Chart -->
+                          <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Dados de ordens finalizados por mês</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart"></canvas>
+                                    </div>
+                                    <hr><h5>
+                                    <span class="badge badge-light">Totais por mês:  </span> 
+                                    <span class="badge badge-primary">Jan <span class="badge badge-light">{{jan}}</span></span>
+                                    <span class="badge badge-primary">Fev <span class="badge badge-light">{{fev}}</span></span>
+                                    <span class="badge badge-primary">mar <span class="badge badge-light">{{mar}}</span></span>
+                                    <span class="badge badge-primary">Abr <span class="badge badge-light">{{abr}}</span></span>
+                                    <span class="badge badge-primary">Mai <span class="badge badge-light">{{mai}}</span></span>
+                                    <span class="badge badge-primary">Jun <span class="badge badge-light">{{jun}}</span></span>
+                                    <span class="badge badge-primary">Jul <span class="badge badge-light">{{jul}}</span></span>
+                                    <span class="badge badge-primary">Ago <span class="badge badge-light">{{ago}}</span></span>
+                                    <span class="badge badge-primary">Set <span class="badge badge-light">{{set}}</span></span>
+                                    <span class="badge badge-primary">Out <span class="badge badge-light">{{out}}</span></span>
+                                    <span class="badge badge-primary">Nov <span class="badge badge-light">{{nov}}</span></span>
+                                    <span class="badge badge-primary">Dez <span class="badge badge-light">{{dez}}</span></span>
+                                    <span class="badge badge-success">Total  <span class="badge badge-light">{{totalAnual}}</span></span>
+                                    </h5>
+                                </div>
+                            </div>   
+                        </div> 
+                        </div>   
+
+
+                        <!--                       
+                        <div class="col-xl-12 col-lg-7">
+                        
+                           <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Dados por tipo de Equipamento</h6>
+                            </div>
+                            <div class="card-body">
+                                    <canvas id="myChar"></canvas>
+                            </div>
+                            </div>
+                            </div>
+                        </div>                  
+                        -->        
+
+                            <!-- Approach -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Informações de dados</h6>
+                                </div>
+                                <div class="card-body">
+                                    <p style="font-size: 14px;">As informações e dados contidos neste painel são confidenciais, dados extraidos de nosso sistema em tempo real. As informações aqui
+                                        contidas são somente para acompanhamento de equipamentos enviados para reparo em nossa empresa. </p>
+                                    </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+
+                <!--Script-->
+                 <script>
+                  window.testDonut = new Donutty("#test", {
+                  circle: false ,
+                  round: false ,
+                  min: -50 ,
+                  max: 100 ,
+                  value: {{totalPColetor}},
+                  radius: 100 ,
+                  thickness: 20 ,
+                  padding: -10 ,
+                  color: "#0f7de4" ,
+                  bg: ""                 
+                 });
+
+                 window.testDonut = new Donutty("#test2", {
+                  circle: false ,
+                  round: false ,
+                  min: -50 ,
+                  max: 100 ,
+                  value: {{totalPLeitor}} ,
+                  radius: 100 ,
+                  thickness: 20 ,
+                  padding: -10 ,
+                  color: "#0f7de4" ,
+                  bg: ""                 
+                 });
+
+                  window.testDonut = new Donutty("#test3", {
+                  circle: false ,
+                  round: false ,
+                  min: -50 ,
+                  max: 100 ,
+                  value: {{totalPImpressora}} ,
+                  radius: 100 ,
+                  thickness: 20 ,
+                  padding: -10 ,
+                  color: "#0f7de4" ,
+                  bg: ""                 
+                 });
+
+                 window.testDonut = new Donutty("#test4", {
+                  circle: false ,
+                  round: false ,
+                  min: 0 ,
+                  max: 100 ,
+                  value: {{totalPBuscaPreco}},
+                  radius: 100 ,
+                  thickness: 20 ,
+                  padding: -10 ,
+                  color: "#0f7de4" ,
+                  bg: ""                 
+                 });
+
+                 window.testDonut = new Donutty("#test5", {
+                  circle: false ,
+                  round: false ,
+                  min: -50 ,
+                  max: 100 ,
+                  value: {{totalPOutros}},
+                  radius: 100 ,
+                  thickness: 20 ,
+                  padding: -10 ,
+                  color: "#0f7de4" ,
+                  bg: ""                 
+                 });
+
+                 
+                </script>
+{{>footer}}
+            
+    
+
