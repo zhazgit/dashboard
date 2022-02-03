@@ -4,7 +4,6 @@ const path = require('path');
 const exphds = require('express-handlebars');
 const admin = require('./routes/admin');
 const user = require('./routes/default');
-const morgan = require('morgan');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
@@ -16,7 +15,6 @@ require('./database/configDB');
 require('./config/passport');
 
 //Middlewars
-app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(session({
