@@ -1,7 +1,8 @@
 const usersCtrl = {};
-const request = require('request');
+const requestIp = require('request-ip');
 const User = require('../models/User');
 const passport = require('passport');
+const axios = require('axios');
 
 
 let ip, cidade, regiao;
@@ -54,19 +55,18 @@ usersCtrl.signup = async (req,res) => {
    }
 }
 
-usersCtrl.renderSignInForm = (req,res) => {
-    const url = "http://ip-api.com/json";
-    request (url, async (err, res, body) =>{
-        if(err) {
-        console.log('error: ', err )
-        }else{        
-        var ipInfo = await JSON.parse(body);
-        ip = await ipInfo.query;  
-        cidade =  await ipInfo.city;
-        regiao =  await ipInfo.region;        
-    }    
-}); 
-res.render('users/signin', {ip, cidade, regiao});;   
+usersCtrl.renderSignInForm = async (req,res) => {
+        const clientIp = requestIp.getClientIp(req); 
+        console.log(clientIp);    
+        const dadosIP = await axios.get(`http://ip-api.com/json/${clientIp}`)
+        const status = dadosIP.data.status;
+        const ip = dadosIP.data.query;
+        const country = dadosIP.data.country;
+        const city = dadosIP.data.city;
+        const region = dadosIP.data.region;
+        const countryCode = dadosIP.data.countryCode;
+        const isp = dadosIP.data.isp;     
+        res.render('users/signin', {ip,city,region});;   
 }
 
 usersCtrl.signin = passport.authenticate('local', {

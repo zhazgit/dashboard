@@ -46,14 +46,14 @@
                                     <tbody>                                     
                                         {{#each dados.dado}} 
                                         <tr>       
-                                        <td>{{os}}</td>                                        
+                                        <td><b>{{os}}</b></td>                                        
                                         <td>{{ns}}</td>
                                         <td>{{nome}}</td>
                                         <td>{{equipamento}}</td>
-                                        <td>{{dataEntrada}}</td>
-                                        <td>{{dataMovimento}}</td>
+                                        <td class="text-danger">{{dataEntrada}}</td>
+                                        <td class="text-primary">{{dataMovimento}}</td>
                                         <td>{{estagio}}</td>    
-                                        </tr>       
+                                        </tr>     
                                         {{/each}}                                    
                                        
                                     </tbody>

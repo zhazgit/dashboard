@@ -13,6 +13,20 @@
                 <p id="nov" hidden>{{nov}}</p>
                 <p id="dez" hidden>{{dez}}</p>
 
+                <p id="janA" hidden>{{janA}}</p>
+                <p id="fevA" hidden>{{fevA}}</p>
+                <p id="marA" hidden>{{marA}}</p>
+                <p id="abrA" hidden>{{abrA}}</p>
+                <p id="maiA" hidden>{{maiA}}</p>
+                <p id="junA" hidden>{{junA}}</p>
+                <p id="julA" hidden>{{julA}}</p>
+                <p id="agoA" hidden>{{agoA}}</p>
+                <p id="setA" hidden>{{setA}}</p>
+                <p id="outA" hidden>{{outA}}</p>
+                <p id="novA" hidden>{{novA}}</p>
+                <p id="dezA" hidden>{{dezA}}</p>
+
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     {{#each data}}
@@ -23,13 +37,167 @@
                         <h1 class="h3 mb-0 text-gray-800">Painel</h1>                                       
                     </div>  
 
+
+                    <!-- Cards -->
                     <div class="row">
-                        <div class="col-xl-8 col-md-8 mb-4">
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Dados Totais de equipamentos finalizados
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Aguardando Vistoria</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAguardandoVistoria">{{totalAguardandoVistoria}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-calendar fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Vistoriados -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Vistoriados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalVistoriado">{{totalVistoriado}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-check fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Card Aguardando Aprovação -->
+                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-dark shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
+                                                Aguardando Aprovação</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAguardandoAprovacao">{{totalAguardandoAprovacao}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- Card Aprovados -->
+                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Aprovados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAprovado">{{totalAprovado}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-handshake fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Em MAnutenção-->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                                Em Manutenção</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalEmManutencao">{{totalEmManutencao}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-tools fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+
+                        <!-- Card Manutenção Concluida -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                Manutenção Concluida</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalManutencaoConcluida">{{totalManutencaoConcluida}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-thumbs-up fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>              
+
+
+                        <!-- Card Reprovados -->
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Reprovados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalReprovado">{{totalReprovado}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-thumbs-down fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                         <!-- Card Expedição -->
+                         <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Expedição</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalExpedicao">{{totalExpedicao}} </div><span class="badge badge-dark">Equipamentos</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-box-open fa-2x text-gray-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final Cards -->
+
+
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="text-xs font-weight-bold text-gray-800 text-uppercase mb-1">                                           
+                                             Dados Totais de equipamentos finalizados
                                         </div>
                                         </div>
                                     <hr>                                    
@@ -300,12 +468,13 @@
                      
                         
 
+                        <!-- Dados Aguardando Chegada -->
 
-                        <div class="col-xl-4 col-md-4 mb-4">
+                        <div class="col-xl-12 col-md-12 mb-6">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
-                                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        <div class="text-xs font-weight-bold text-gray-900 text-uppercase mb-1">
                                             Equipamentos aguardando chegada  
                                           <i class="fas fa-truck fa-1x text-primary-300"></i>                                            
                                         </div>
@@ -348,246 +517,64 @@
                                              Total</div>         
                                     </div>
                                 </div> 
-                                <div class="alert alert-primary" role="alert">
-                                 Itapevi <a href="#" class="alert-link">{{totalAguardandoChegadaItapevi }}</a> equipamentos.
-                                </div> 
-                                <div class="alert alert-primary" role="alert">
-                                 Osasco <a href="#" class="alert-link">{{totalAguardandoChegadaOsasco }}</a> equipamentos.
-                                </div>  
-                                <div class="alert alert-primary" role="alert">
-                                 Seropedica <a href="#" class="alert-link">{{totalAguardandoChegadaSeropedica}}</a> equipamentos.
-                                </div>  
-                                <div class="alert alert-primary" role="alert">
-                                 Cajamar <a href="#" class="alert-link">{{totalAguardandoChegadaCajamar}}</a> equipamentos.
-                                </div>  
-                                <div class="alert alert-primary" role="alert">
-                                 C. S. Agostinho <a href="#" class="alert-link">{{totalAguardandoChegadaCSA}}</a> equipamentos.
-                                </div>  
-                                <div class="alert alert-primary" role="alert">
-                                 Uberlândia <a href="#" class="alert-link">{{totalAguardandoChegadaUberlandia }}</a> equipamentos.
-                                </div>                   
+
+                                <div class="row">
+                                        <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="alert alert-primary" role="alert">
+                                        Itapevi <a href="#" class="alert-link">{{totalAguardandoChegadaItapevi }}</a> equipamentos.
+                                        </div> 
+                                        </div>
+                                        <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="alert alert-primary" role="alert">
+                                        Osasco <a href="#" class="alert-link">{{totalAguardandoChegadaOsasco }}</a> equipamentos.
+                                        </div>  
+                                        </div>
+                                        <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="alert alert-primary" role="alert">
+                                        Seropedica <a href="#" class="alert-link">{{totalAguardandoChegadaSeropedica}}</a> equipamentos.
+                                        </div>  
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="alert alert-primary" role="alert">
+                                        Cajamar <a href="#" class="alert-link">{{totalAguardandoChegadaCajamar}}</a> equipamentos.
+                                        </div>
+                                        </div>  
+                                        <div class="col-xl-4 col-md-1 mb-1">
+                                        <div class="alert alert-primary" role="alert">
+                                        C. S. Agostinho <a href="#" class="alert-link">{{totalAguardandoChegadaCSA}}</a> equipamentos.
+                                        </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-1 mb-1">  
+                                        <div class="alert alert-primary" role="alert">
+                                        Uberlândia <a href="#" class="alert-link">{{totalAguardandoChegadaUberlandia }}</a> equipamentos.
+                                        </div>
+                                        </div>           
+                                </div>        
                         </div>
-                         
+               
                         </div>                       
                         </div>                         
                         </div>         
 
+                   <!-- Content Row -->
 
-
-
-                                    
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Aguardando Vistoria</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAguardandoVistoria">{{totalAguardandoVistoria}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Vistoriados</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalVistoriado">{{totalVistoriado}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-check fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Pending Requests Card Example -->
-                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-dark shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                                Aguardando Aprovação</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAguardandoAprovacao">{{totalAguardandoAprovacao}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                         <!-- Pending Requests Card Example -->
-                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Aprovados</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalAprovado">{{totalAprovado}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-handshake fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Em Manutenção</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalEmManutencao">{{totalEmManutencao}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-tools fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>   
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Manutenção Concluida</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalManutencaoConcluida">{{totalManutencaoConcluida}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-thumbs-up fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>              
-
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-danger shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                                Reprovados</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalReprovado">{{totalReprovado}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-thumbs-down fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                         <!-- Pending Requests Card Example -->
-                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Expedição</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800" id="totalExpedicao">{{totalExpedicao}} </div><span class="badge badge-dark">Equipamentos</span>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-box-open fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                    <!-- Content Row -->
-
-                    <div class="row">
-                     <div class="col-xl-4 col-lg-5">
-                            <div class="card shadow mb-4">
-                                <!-- Card Header - Dropdown -->
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Dados Atuais</h6>                                    
-                                </div>
-                                <!-- Card Body -->
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myPieChart"></canvas>
-                                    </div>
-                                    <hr>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle" style="color: #7B68EE;"></i> Ag. Vistoria
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle " style="color: #9370DB;"></i> Vistoriados
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle " style="color: #8A2BE2;"></i> Ag. Aprovação
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle " style="color: #00FF7F;"></i> Aprovados
-                                        </span>
-                                    </div>
-                                    <div class="mt-4 text-center small">
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle " style="color: #9400D3;"></i> Em Manutenção
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle " style="color: #A020F0;" ></i> Man. Concluida
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle " style="color: #DC143C;"></i> Reprovados
-                                        </span>
-                                        <span class="mr-2">
-                                            <i class="fas fa-circle " style="color: #8B008B;"></i> Expedição
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
+                   
 
                           <!-- Bar Chart -->
-                          <div class="col-xl-8 col-lg-7">
+                          <div class="row mt-4">
+                          <div class="col-xl-12 col-lg-12">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Dados de ordens finalizados por mês</h6>
+                                    <h6 class="m-0 font-weight-bold text-gray-800">Dados de ordens finalizados por mês - Ano {{anoAtual}}</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
                                         <canvas id="myBarChart"></canvas>
                                     </div>
                                     <hr><h5>
-                                    <span class="badge badge-light">Totais por mês:  </span> 
+                                    <span class="badge badge-light">Totais por mês</span><br> 
                                     <span class="badge badge-primary">Jan <span class="badge badge-light">{{jan}}</span></span>
                                     <span class="badge badge-primary">Fev <span class="badge badge-light">{{fev}}</span></span>
                                     <span class="badge badge-primary">mar <span class="badge badge-light">{{mar}}</span></span>
@@ -607,6 +594,39 @@
                         </div> 
                         </div>   
 
+                          <!-- Bar Chart -->
+                          <div class="row mt-4">
+                          <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-gray-800">Dados de ordens finalizados por mês - Ano {{anoAnterior}}</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="myBarChart2"></canvas>
+                                    </div>
+                                    <hr><h5>
+                                    <span class="badge badge-light">Totais por mês</span><br> 
+                                    <span class="badge badge-primary">Jan <span class="badge badge-light">{{janA}}</span></span>
+                                    <span class="badge badge-primary">Fev <span class="badge badge-light">{{fevA}}</span></span>
+                                    <span class="badge badge-primary">mar <span class="badge badge-light">{{marA}}</span></span>
+                                    <span class="badge badge-primary">Abr <span class="badge badge-light">{{abrA}}</span></span>
+                                    <span class="badge badge-primary">Mai <span class="badge badge-light">{{maiA}}</span></span>
+                                    <span class="badge badge-primary">Jun <span class="badge badge-light">{{junA}}</span></span>
+                                    <span class="badge badge-primary">Jul <span class="badge badge-light">{{julA}}</span></span>
+                                    <span class="badge badge-primary">Ago <span class="badge badge-light">{{agoA}}</span></span>
+                                    <span class="badge badge-primary">Set <span class="badge badge-light">{{setA}}</span></span>
+                                    <span class="badge badge-primary">Out <span class="badge badge-light">{{outA}}</span></span>
+                                    <span class="badge badge-primary">Nov <span class="badge badge-light">{{novA}}</span></span>
+                                    <span class="badge badge-primary">Dez <span class="badge badge-light">{{dezA}}</span></span>
+                                    <span class="badge badge-success">Total  <span class="badge badge-light">{{tAAnterior}}</span></span>
+                                    </h5>
+                                </div>
+                            </div>   
+                        </div> 
+                        </div>  
+                        
+
 
                         <!--                       
                         <div class="col-xl-12 col-lg-7">
@@ -624,16 +644,20 @@
                         -->        
 
                             <!-- Approach -->
-                            <div class="card shadow mb-4">
+                            <div class="row mt-2 mb-2">
+                                <div class="col-xl-12 col-lg-12">
+                            <div class="card shadow">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Informações de dados</h6>
                                 </div>
                                 <div class="card-body">
-                                    <p style="font-size: 14px;">As informações e dados contidos neste painel são confidenciais, dados extraidos de nosso sistema em tempo real. As informações aqui
+                                    <p style="font-size: 14px; color:rgb(51, 56, 61);">As informações e dados contidos neste painel são confidenciais, dados extraidos de nosso sistema em tempo real. As informações aqui
                                         contidas são somente para acompanhamento de equipamentos enviados para reparo em nossa empresa. </p>
                                     </div>
+                                    </div>
+                                 </div>
                             </div>
-
+                           </div>
                         </div>
                     </div>
 

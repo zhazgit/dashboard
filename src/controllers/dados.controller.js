@@ -1,32 +1,122 @@
 const dadosCtrl = {};
 const axios = require('axios');
 const e = require('connect-flash');
-const request = require('request');
+const RequestIp = require('@supercharge/request-ip');
 const requestIp = require('request-ip');
 
+     //Variaveis
+     var data;  var  AGUARDANDO_CHEGADA; var data1; var  AGUARDANDO_VISTORIA; var  data4; var  EM_VISTORIA; var  data5; var  VISTORIADO;
+     var  data6; var  AGUARDANDO_APROVACAO; var  data7; var  AGUARDANDO_PECAS; var  data8; var  APROVADO;  var  data9; var  EM_MANUTENCAO;
+     var  data11; var  MANUTENCAO_CONCLUIDA; var  data13;  var  EXPEDICAO; var  data17; var  REPROVADO; var  data18; var  FINALIZADA; var FT15;
+     var jan = 0; var fev = 0; var mar = 0; var abr = 0; var mai = 0; var jun = 0; 
+     var jul = 0; var ago = 0; var set = 0; var out = 0; var nov = 0; var dez = 0;
+     var janA = 0; var fevA = 0; var marA = 0; var abrA = 0; var maiA = 0; var junA = 0;
+     var julA = 0; var agoA = 0; var setA = 0; var outA = 0; var novA = 0; var dezA = 0;    
+     var empresa;
+     var status;
+     var ip;
+     var country;
+     var city;
+     var region;
+     var countryCode;
+     var isp;
+    
 
+     //Pega dados API a cada 5 minutos.
+        setTimeout(async function run() {
+            //Axios API
+            data  = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,1');
+            await formataData(data.data);  
+            AGUARDANDO_CHEGADA = await data.data;              
+            
+            data1 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,3');
+            await formataData(data1.data); 
+            AGUARDANDO_VISTORIA = await data1.data;
+            
+            data4 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,4');
+            await formataData(data4.data);
+            EM_VISTORIA = await data4.data;
+            
+            data5 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,5');
+            await formataData(data5.data); 
+            VISTORIADO = await data5.data;
+            
+            data6 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,6');
+            await formataData(data6.data);
+            AGUARDANDO_APROVACAO = await data6.data;
+            
+            data7 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,7');
+            await formataData(data7.data);
+            AGUARDANDO_PECAS = await data7.data;
+            
 
+            data8 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,8');
+            await formataData(data8.data);
+            APROVADO = await data8.data;
+            
+
+            data9 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,9');
+            await formataData(data9);
+            EM_MANUTENCAO = await data9.data;
+            
+            data11 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,11');
+            await formataData(data11.data);
+            MANUTENCAO_CONCLUIDA = await data11.data;
+            
+
+            data13 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,13');
+            await formataData(data13.data);
+            EXPEDICAO = await data13.data; 
+            
+
+            data17 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,17');
+            await formataData(data17);
+            REPROVADO = await data17.data;
+            
+
+            data18 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,15');
+            await formataData(data18.data);
+            FINALIZADA = await data18.data;
+            
+
+            var date =  new Date();
+            console.log("Função Rodou: " + date);
+            setTimeout(run, 300000);
+        });
+
+    async function ipCliente (dado) {
+        var clientIp = requestIp.getClientIp(dado); 
+        console.log(clientIp);    
+        const dadosIP = await axios.get(`http://ip-api.com/json/${clientIp}`)
+        status = dadosIP.data.status;
+        ip = dadosIP.data.query;
+        country = dadosIP.data.country;
+        city = dadosIP.data.city;
+        region = dadosIP.data.region;
+        countryCode = dadosIP.data.countryCode;
+        isp = dadosIP.data.isp; 
+    }    
 
 dadosCtrl.renderDados = async (req, res) =>{
-    const ipNovo =  requestIp.getClientIp(req);  
+    var dIP = await req;
+    await ipCliente(dIP);
     
-    const url = "http://ip-api.com/json";
-    request (url, async (err, res, body) =>{
-    if(err) {
-    console.log('error: ', err )
-    }else{        
-    var ipInfo = await JSON.parse(body);
-    ip = await ipInfo.query;  
-    cidade =  await ipInfo.city;
-    regiao =  await ipInfo.region;        
-    } 
-    });
-   
-    
+
+    var date = new Date();
+    var anoAnterior = (date.getUTCFullYear() - 1);
+    var anoAtual = date.getUTCFullYear();
+
+    //Zerar contador por mês
+    jan = 0, fev = 0, mar = 0, abr = 0, mai = 0, jun = 0, jul = 0 , ago = 0, set = 0, out = 0, nov = 0, dez = 0; 
+    janA = 0, fevA = 0, marA = 0, abrA = 0, maiA = 0, junA = 0, julA = 0 , agoA = 0, setA = 0, outA = 0, novA = 0, dezA = 0; 
+    empresa = {dado: []};    
+
     let email = req.user.email;
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
-    let dados = {data: []};
+    usuario.toUpperCase();
+    var dados = {data: []};
+
     //Variaveis Totais
     var totalAguardandoChegada = 0;
     var totalAguardandoVistoria = 0;
@@ -188,39 +278,6 @@ dadosCtrl.renderDados = async (req, res) =>{
      var totalExpedicaoCSA= 0;
      var totalReprovadoCSA= 0;
      var totalFinalizadaCSA = 0;
-
-
-
-
-    //Axios API
-
-    const  data  = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,1');
-    const  AGUARDANDO_CHEGADA = data.data;
-    const  data1 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,3');
-    const  AGUARDANDO_VISTORIA = data1.data; 
-    const  data4 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,4');
-    const  EM_VISTORIA = data4.data;
-    const  data5 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,5');
-    const  VISTORIADO = data5.data; 
-    const  data6 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,6');
-    const  AGUARDANDO_APROVACAO = data6.data;
-    const  data7 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,7');
-    const  AGUARDANDO_PECAS = data7.data;
-    const  data8 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,8');
-    const  APROVADO = data8.data;
-    const  data9 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,9');
-    const  EM_MANUTENCAO = data9.data;
-    const  data11 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,11');
-    const  MANUTENCAO_CONCLUIDA = data11.data;
-    const  data13 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,13');
-    const  EXPEDICAO = data13.data; 
-    const  data17 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,17');
-    const  REPROVADO = data17.data;
-    const  data18 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,15');
-    const  FINALIZADA = data18.data;
-    const  FT15 = await formataData(FINALIZADA);
-
-    var empresa = {dado: []}
     
     for(var i = 0; i < AGUARDANDO_CHEGADA.length; i++) {
     let cliente = AGUARDANDO_CHEGADA[i].PessoaFantasia;
@@ -678,11 +735,13 @@ dadosCtrl.renderDados = async (req, res) =>{
         }
     }
 
-    var jan = 0, fev = 0, mar = 0, abr = 0, mai = 0, jun = 0, jul = 0 , ago = 0, set = 0, out = 0, nov = 0, dez = 0;
-    const ano = "2022";
+
+  
+  
+    const ano = anoAtual;
     const  FT3 = formataData(empresa);
     for(var i = 0; i < empresa.dado.length; i ++) {        
-        var valor = empresa.dado[i].dataMovimento;        
+        var valor = await empresa.dado[i].dataMovimento;        
         if(valor.match('01-'+ ano)) {
             jan += 1;     
         } 
@@ -719,7 +778,52 @@ dadosCtrl.renderDados = async (req, res) =>{
         if(valor.match('12-'+ ano)) {
             dez += 1;     
         }            
+     }  
+    
+
+    
+    const anoA = anoAnterior;
+    const  FT4 = formataData(empresa);
+    for(var i = 0; i < empresa.dado.length; i ++) {        
+        var valor = await empresa.dado[i].dataMovimento;        
+        if(valor.match('01-'+ anoA)) {
+            janA += 1;     
+        } 
+        if(valor.match('02-'+ anoA)) {
+            fevA += 1;     
+        }  
+        if(valor.match('03-'+ anoA)) {
+            marA += 1;     
+        }  
+        if(valor.match('04-'+ anoA)) {
+            abrA += 1;     
+        }  
+        if(valor.match('05-'+ anoA)) {
+            maiA += 1;     
+        }  
+        if(valor.match('06-'+ anoA)) {
+            junA += 1;     
+        }  
+        if(valor.match('07-'+ anoA)) {
+            julA += 1;     
+        }  
+        if(valor.match('08-'+ anoA)) {
+            agoA += 1;     
+        } 
+        if(valor.match('09-'+ anoA)) {
+            setA += 1;     
+        }
+        if(valor.match('10-'+ anoA)) {
+            outA += 1;     
+        }  
+        if(valor.match('11-'+ anoA)) {
+            novA += 1;     
+        }  
+        if(valor.match('12-'+ anoA)) {
+            dezA += 1;     
+        }            
     }
+
 
     for(var i = 0; i < FINALIZADA.length; i ++) { 
         var cliente = FINALIZADA[i].PessoaFantasia;
@@ -879,14 +983,17 @@ dadosCtrl.renderDados = async (req, res) =>{
 
     
     var totalAnual = jan+fev+mar+abr+mai+jun+jul+ago+set+out+nov+dez; 
+    var tAAnterior = janA+fevA+marA+abrA+maiA+junA+julA+agoA+setA+outA+novA+dezA; 
       
-    res.render('index', {
+    await res.render('index', {
     email, data,img, totalColetor, totalLeitor, totalImpressora, totalOutros, totalBuscaPreco,
     totalColetorAC, totalLeitorAC, totalImpressoraAC, totalOutrosAC, totalBuscaPrecoAC,totalGeralAC,
     totalPColetor, totalPLeitor, totalPImpressora, totalPBuscaPreco, totalPOutros,totalFinalizada,
     totalAguardandoChegada,totalAguardandoVistoria,totalEmVistoria, totalVistoriado,totalAguardandoAprovacao,
     totalAguardandoPecas,totalAprovado,totalEmManutencao,totalManutencaoConcluida,totalExpedicao,totalReprovado,
-    jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez, totalAnual, totalItapevi, totalSeropedica, totalOsasco,
+    jan, fev, mar, abr, mai, jun, jul, ago, set, out, nov, dez, 
+    janA, fevA, marA, abrA, maiA, junA, julA, agoA, setA, outA, novA, dezA,tAAnterior,
+    totalAnual, totalItapevi, totalSeropedica, totalOsasco,
     totalCajamar, totalUberlandia, totalCSA,
     totalItapeviColetor,
     totalSeropedicaColetor,
@@ -930,9 +1037,9 @@ dadosCtrl.renderDados = async (req, res) =>{
     totalAguardandoChegadaCSA,
     totalAguardandoChegadaCajamar,
     totalAguardandoChegadaUberlandia,
-    ip,
-    cidade,
-    regiao
+    anoAnterior,
+    anoAtual,
+    ip, city, region   
 });
 
 }
@@ -950,7 +1057,7 @@ dadosCtrl.renderOS = async(req,res) => {
     let email = req.user.email;
     var usuario =  req.user.cnpj_cpf;
     let img = req.user.img;
-    let dados = {data: []};
+    
     //Variaveis Totais
     var totalAguardandoChegada = 0;
     var totalAguardandoVistoria = 0;
@@ -963,63 +1070,9 @@ dadosCtrl.renderOS = async(req,res) => {
     var totalManutencaoConcluida = 0;
     var totalExpedicao = 0;
     var totalReprovado = 0;
-    var totalFinalizada = 0;
-
-    
-
-    //Axios API
-
-    const  data  = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,1');
-    const  AGUARDANDO_CHEGADA = data.data;
-    const  FT = await formataData(AGUARDANDO_CHEGADA);
-    const  VT = await formataValor(AGUARDANDO_CHEGADA);
-    const  data1 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,3');
-    const  AGUARDANDO_VISTORIA = data1.data;
-    const  FT1 = await formataData(AGUARDANDO_VISTORIA); 
-    const  VT1 = await formataValor(AGUARDANDO_VISTORIA);
-    const  data4 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,4');
-    const  EM_VISTORIA = data4.data;
-    const  FT2 = await formataData(EM_VISTORIA);
-    const  VT2 = await formataValor(EM_VISTORIA);
-    const  data5 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,5');
-    const  VISTORIADO = data5.data;
-    const  FT3 = await formataData(VISTORIADO);
-    const  VT3 = await formataValor(VISTORIADO); 
-    const  data6 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,6');
-    const  AGUARDANDO_APROVACAO = data6.data;
-    const  FT4 = await formataData(AGUARDANDO_APROVACAO);
-    const  VT4 = await formataValor(AGUARDANDO_APROVACAO);
-    const  data7 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,7');
-    const  AGUARDANDO_PECAS = data7.data;
-    const  FT5 = await formataData(AGUARDANDO_PECAS);
-    const  VT5 = await formataValor(AGUARDANDO_PECAS);
-    const  data8 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,8');
-    const  APROVADO = data8.data;
-    const  FT6 = await formataData(APROVADO);
-    const  VT6 = await formataValor(APROVADO);
-    const  data9 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,9');
-    const  EM_MANUTENCAO = data9.data;
-    const  FT7 = await formataData(EM_MANUTENCAO);
-    const  VT7 = await formataValor(EM_MANUTENCAO);
-    const  data11 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,11');
-    const  MANUTENCAO_CONCLUIDA = data11.data;
-    const  FT8 = await formataData(MANUTENCAO_CONCLUIDA);
-    const  VT8 = await formataValor(MANUTENCAO_CONCLUIDA);
-    const  data13 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,13');
-    const  EXPEDICAO = data13.data; 
-    const  FT9 = await formataData(EXPEDICAO);
-    const  VT9 = await formataValor(EXPEDICAO);
-    const  data17 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,17');
-    const  REPROVADO = data17.data;
-    const  FT10 = await formataData(REPROVADO);
-    const  VT10 = await formataValor(REPROVADO);
-    const  data18 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,15');
-    const  FINALIZADA = data18.data;
-    const  FT11 = await formataData(FINALIZADA);
-    const  VT11 = await formataValor(FINALIZADA);
+    var totalFinalizada = 0; 
 
     var empresa = {dado: []}
-    var finalizada = {dado: []}
     
     for(var i = 0; i <  AGUARDANDO_CHEGADA.length; i++) {
     let cliente = AGUARDANDO_CHEGADA[i].PessoaFantasia;
@@ -1241,26 +1294,8 @@ dadosCtrl.renderOS = async(req,res) => {
         }
     }
 
-    for(var i = 0; i < FINALIZADA.length; i++) {
-        let cliente = FINALIZADA[i].PessoaFantasia;
-        if(cliente.includes(`${usuario}`)) {
-            finalizada.dado.push({
-                os: FINALIZADA[i].OSID,
-                dataEntrada: FINALIZADA[i].OSData,
-                dataMovimento: FINALIZADA[i].DataFinalMovto,
-                cliente: FINALIZADA[i].PessoaCnpjCpf,
-                nome: FINALIZADA[i].PessoaFantasia,
-                agente: FINALIZADA[i].AgenteNegNome,
-                estagio: FINALIZADA[i].EstagioDescricao,
-                ns: FINALIZADA[i].EquipamentoLTS,
-                equipamento: FINALIZADA[i].NomeEquipamento,
-                descricao: FINALIZADA[i].DescricaoTipoOS,
-                valor: FINALIZADA[i].ValorTotal
-                });
-        totalFinalizada += 1;               
-        }
-    }    
-    await res.render('os', {empresa, email, img, ip, cidade, regiao});
+   
+    await res.render('os', {empresa, email, img, ip, city, region });
 }
 
 
@@ -1268,14 +1303,8 @@ dadosCtrl.renderAA = async(req,res) => {
     let email = req.user.email;
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
-    var dados = {dado: []};
-
-    const  data6 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,6');
-    const  AGUARDANDO_APROVACAO = await data6.data;
-    const  FT4 = await formataData(AGUARDANDO_APROVACAO);
-    const  VT4 = await formataValor(AGUARDANDO_APROVACAO);
-    
-    for(var i = 0; i < AGUARDANDO_APROVACAO.length; i++) {
+    var dados = {dado: []};   
+     for(var i = 0; i < AGUARDANDO_APROVACAO.length; i++) {
         let cliente = AGUARDANDO_APROVACAO[i].PessoaFantasia;
         if(cliente.includes(`${usuario}`)) {
             dados.dado.push({
@@ -1295,9 +1324,9 @@ dadosCtrl.renderAA = async(req,res) => {
     }
 
     if(dados.dado.length != 0) {
-        await res.render('aguardando_aprovacao', {email, dados, img});
+        await res.render('aguardando_aprovacao', {email, dados, img,ip, city, region });
     }else{
-        await res.render('aguardando_aprovacao', {email, img,text: 'Não existem dados'}); 
+        await res.render('aguardando_aprovacao', {email, img,ip, city, region, text: 'Não existem dados'}); 
     }      
 }
 
@@ -1306,12 +1335,6 @@ dadosCtrl.renderAC = async(req,res) => {
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
     var dados = {dado: []};
-
-    const  data  = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,1');
-    const  AGUARDANDO_CHEGADA = data.data;
-    const  FT = await formataData(AGUARDANDO_CHEGADA);
-    const  VT = await formataValor(AGUARDANDO_CHEGADA);    
-    
         for(var i = 0; i < AGUARDANDO_CHEGADA.length; i++) {
             let cliente = AGUARDANDO_CHEGADA[i].PessoaFantasia;
             if(cliente.includes(`${usuario}`)) {
@@ -1334,7 +1357,7 @@ dadosCtrl.renderAC = async(req,res) => {
         if(dados.dado.length != 0) {
             await  res.render('aguardando_chegada', {email,img, dados}); 
         }else{
-            await  res.render('aguardando_chegada', {email,img, text: 'Não existem dados !'});
+            await  res.render('aguardando_chegada', {email,img,ip, city, region, text: 'Não existem dados !'});
         }   
 }
 
@@ -1344,12 +1367,6 @@ dadosCtrl.renderAPS = async(req,res) => {
     var usuario =  req.user.cnpj_cpf;
     var dados = {dado: []};
     var texto = "Não existem dados";
-
-    const  data7 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,7');
-    const  AGUARDANDO_PECAS = data7.data;
-    const  FT5 = await formataData(AGUARDANDO_PECAS);
-    const  VT5 = await formataValor(AGUARDANDO_PECAS);
-
    for(var i = 0; i < AGUARDANDO_PECAS.length; i++) {
             let cliente = AGUARDANDO_PECAS[i].PessoaFantasia;
             if(cliente.includes(`${usuario}`)) {
@@ -1370,9 +1387,9 @@ dadosCtrl.renderAPS = async(req,res) => {
         }
 
         if(dados.dado.length != 0) {
-            await  res.render('aguardando_pecas', {email,img, dados}); 
+            await  res.render('aguardando_pecas', {email,img, dados,ip, city, region}); 
         }else{
-            await res.render('aguardando_pecas', {email,img, texto}); 
+            await res.render('aguardando_pecas', {email,img, texto, ip, city, region}); 
         }
 }
 
@@ -1381,14 +1398,7 @@ dadosCtrl.renderAV = async(req,res) => {
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
     var dados = {dado: []};
-    var texto = "Não existem dados";
-
-    const  data1 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,3');
-    const  AGUARDANDO_VISTORIA = data1.data;
-    const  FT1 = await formataData(AGUARDANDO_VISTORIA); 
-    const  VT1 = await formataValor(AGUARDANDO_VISTORIA);
-
-    
+    var texto = "Não existem dados";    
         for(var i = 0; i < AGUARDANDO_VISTORIA.length; i++) {
             let cliente = AGUARDANDO_VISTORIA[i].PessoaFantasia;
             if(cliente.includes(`${usuario}`)) {
@@ -1408,9 +1418,9 @@ dadosCtrl.renderAV = async(req,res) => {
              }
         }
         if(dados.dado.length != 0) {
-        await  res.render('aguardando_vistoria', {email,img, dados});  
+        await  res.render('aguardando_vistoria', {email,img, dados, ip, city, region });  
         }else{
-        await res.render('aguardando_vistoria', {email,img, texto}); 
+        await res.render('aguardando_vistoria', {email,img, texto, ip, city, region}); 
     }
 }
     
@@ -1419,14 +1429,7 @@ dadosCtrl.renderEE = async(req,res) => {
     let email = req.user.email;
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
-    var dados = {dado: []};
-
-    const  data13 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,13');
-    const  EXPEDICAO = data13.data; 
-    const  FT9 = await formataData(EXPEDICAO);
-    const  VT9 = await formataValor(EXPEDICAO);
-
-    
+    var dados = {dado: []};    
         for(var i = 0; i < EXPEDICAO.length; i++) {
             let cliente = EXPEDICAO[i].PessoaFantasia;
             if(cliente.includes(`${usuario}`)) {
@@ -1448,9 +1451,9 @@ dadosCtrl.renderEE = async(req,res) => {
 
 
         if(dados.dado.length != 0) {
-            await  res.render('em_expedicao', {email,img, dados,});  
+            await  res.render('em_expedicao', {email,img, dados, ip, city, region});  
         }else{
-            await res.render('em_expedicao', {email,img, text: 'Não existem dados'});                
+            await res.render('em_expedicao', {email,img,ip, city, region, text: 'Não existem dados'});                
     }       
 }
 
@@ -1459,12 +1462,7 @@ dadosCtrl.renderEM = async(req,res) => {
     let email = req.user.email;
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
-    var dados = {dado: []};
-
-    const  data9 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,9');
-    const  EM_MANUTENCAO = data9.data;
-    const  FT7 = await formataData(EM_MANUTENCAO);
-    const  VT7 = await formataValor(EM_MANUTENCAO);
+    var dados = {dado: []}; 
     
         for(var i = 0; i < EM_MANUTENCAO.length; i++) {
             let cliente = EM_MANUTENCAO[i].PessoaFantasia;
@@ -1486,9 +1484,9 @@ dadosCtrl.renderEM = async(req,res) => {
         }
 
         if(dados.dado.length != 0) {
-            await  res.render('em_manutencao', {email,img, dados});
+            await  res.render('em_manutencao', {email,img, dados, ip, city, region });
         }else{
-            await res.render('em_manutencao', {email,img,text: 'Não existem dados !'}); 
+            await res.render('em_manutencao', {email,img, ip, city, region, text: 'Não existem dados !'}); 
         }          
 }
 
@@ -1496,14 +1494,11 @@ dadosCtrl.renderF = async(req,res) => {
     let email = req.user.email;
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
-    var dados = {dado: []};
+    dados = {dado: []};
 
-    const  data18 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,15');
-    const  FINALIZADA = data18.data;
-    const  FT11 = await formataData(FINALIZADA);
-    const  VT11 = await formataValor(FINALIZADA);
-    
-        for(var i = 0; i < FINALIZADA.length; i++) {
+    console.log(FINALIZADA);
+
+    for(var i = 0; i < FINALIZADA.length; i++) {
             let cliente = FINALIZADA[i].PessoaFantasia;
             if(cliente.includes(`${usuario}`)) {
                 dados.dado.push({
@@ -1521,25 +1516,22 @@ dadosCtrl.renderF = async(req,res) => {
                     });       
              }
         }
-        if(dados.dado.length != 0) {
-            await  res.render('finalizadas', {email,img, dados});    
+
+   
+       
+        if(dados.dado.length != 0) {     
+            await  res.render('finalizadas', {email,img, dados, ip, city, region });    
         }else {
-            await res.render('finalizadas', {email,img, text: 'Não existem dados !'}); 
-        }
-}
-         
+            await res.render('finalizadas', {email,img, ip, city, region, text: 'Não existem dados !'}); 
+        }    
+}         
 
        
 dadosCtrl.renderMC = async(req,res) => {
     let email = req.user.email;
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
-    var dados = {dado: []};
-
-    const  data11 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,11');
-    const  MANUTENCAO_CONCLUIDA = data11.data;
-    const  FT8 = await formataData(MANUTENCAO_CONCLUIDA);
-    const  VT8 = await formataValor(MANUTENCAO_CONCLUIDA);
+    var dados = {dado: []};   
     
     for(var i = 0; i < MANUTENCAO_CONCLUIDA.length; i++) {
             let cliente = MANUTENCAO_CONCLUIDA[i].PessoaFantasia;
@@ -1560,9 +1552,9 @@ dadosCtrl.renderMC = async(req,res) => {
              }
         }
         if(dados.dado.length != 0) {
-            await  res.render('manutencao_concluida', {email,img, dados}); 
+            await  res.render('manutencao_concluida', {email,img, dados, ip, city, region}); 
         }else{
-            await res.render('manutencao_concluida', {email,img, text: 'Não existem dados !'});
+            await res.render('manutencao_concluida', {email,img,ip, city, region,text: 'Não existem dados !'});
         }           
 }
 
@@ -1571,12 +1563,6 @@ dadosCtrl.renderOA = async(req,res) => {
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
     var dados = {dado: []};
-
-    const  data8 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,8');
-    const  APROVADO = data8.data;
-    const  FT6 = await formataData(APROVADO);
-    const  VT6 = await formataValor(APROVADO);
-
     for(var i = 0; i < APROVADO.length; i++) {
             let cliente = APROVADO[i].PessoaFantasia;
             if(cliente.includes(`${usuario}`)) {
@@ -1596,9 +1582,9 @@ dadosCtrl.renderOA = async(req,res) => {
              }
         }
         if(dados.dado.length != 0) {
-            await  res.render('ordens_aprovadas', {email,img, dados});
+            await  res.render('ordens_aprovadas', {email,img, dados, ip, city, region  });
         }else{
-            await res.render('ordens_aprovadas', {email,img, text: 'Não existem dados !'});
+            await res.render('ordens_aprovadas', {email,img, ip, city, region, text: 'Não existem dados !'});
         }
 }
         
@@ -1608,13 +1594,7 @@ dadosCtrl.renderOR = async(req,res) => {
     let email = req.user.email;
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
-    var dados = {dado: []};
-
-    const  data17 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,17');
-    const  REPROVADO = data17.data;
-    const  FT10 = await formataData(REPROVADO);
-    const  VT10 = await formataValor(REPROVADO);
-    
+    var dados = {dado: []};    
         for(var i = 0; i < REPROVADO.length; i++) {
             let cliente = REPROVADO[i].PessoaFantasia;
             if(cliente.includes(`${usuario}`)) {
@@ -1634,9 +1614,9 @@ dadosCtrl.renderOR = async(req,res) => {
              }
         }
         if(dados.dado.length != 0) {
-            await  res.render('ordens_reprovadas', {email,img, dados}); 
+            await  res.render('ordens_reprovadas', {email,img, dados, ip, city, region}); 
         }else{
-            await res.render('ordens_reprovadas', {email,img, text: 'Não existem dados !'}); 
+            await res.render('ordens_reprovadas', {email,img,ip, city, region, text: 'Não existem dados !'}); 
         }            
 }
 
@@ -1645,12 +1625,6 @@ dadosCtrl.renderV = async(req,res) => {
     let img = req.user.img;
     var usuario =  req.user.cnpj_cpf;
     var dados = {dado: []};
-
-    const  data5 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,5');
-    const  VISTORIADO = data5.data;
-    const  FT3 = await formataData(VISTORIADO);
-    const  VT3 = await formataValor(VISTORIADO);
-    
         for(var i = 0; i < VISTORIADO.length; i++) {
             let cliente = VISTORIADO[i].PessoaCnpjCpf;
             if(cliente.includes(`${usuario}`)) {
@@ -1670,9 +1644,9 @@ dadosCtrl.renderV = async(req,res) => {
              }
         }
         if(dados.dado.length != 0) {
-            await  res.render('vistoriados', {email,img, dados}); 
+            await  res.render('vistoriados', {email,img, dados, ip, city, region}); 
         }else {
-            await res.render('vistoriados', {email,img, text: 'Não existem dados !'});
+            await res.render('vistoriados', {email,img, ip, city, region, text: 'Não existem dados !'});
         }            
 }
 
@@ -1706,6 +1680,17 @@ dadosCtrl.renderV = async(req,res) => {
         }            
     }
  }
+
+ //Funções 
+sortJSON = (item) => {
+    return function(a, b) {
+        if (a[item] < b[item])
+            return 1;
+        else if (a[item] > b[item])
+            return -1;
+        return 0;
+    }
+}
 
 
 module.exports = dadosCtrl;

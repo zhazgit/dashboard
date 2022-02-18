@@ -1,5 +1,5 @@
 // Set new default font family and font color to mimic Bootstrap's default styling
-Chart.defaults.global.defaultFontColor = '#858796';
+Chart.defaults.global.defaultFontColor = '#252323';
 
 const jan = document.getElementById('jan').innerText;
 const fev = document.getElementById('fev').innerText;
@@ -80,7 +80,7 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 200,
+          max: 400,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
@@ -101,10 +101,107 @@ var myBarChart = new Chart(ctx, {
     tooltips: {
       titleMarginBottom: 10,
       titleFontColor: '#6e707e',
-      titleFontSize: 14,
+      titleFontSize: 16,
       backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      borderColor: '#dddfeb',
+      bodyFontColor: "#252323",
+      borderColor: '#252323',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+        }
+      }
+    },
+  }
+});
+
+
+
+const janA = document.getElementById('janA').innerText;
+const fevA = document.getElementById('fevA').innerText;
+const marA = document.getElementById('marA').innerText;
+const abrA = document.getElementById('abrA').innerText;
+const maiA = document.getElementById('maiA').innerText;
+const junA = document.getElementById('junA').innerText;
+const julA = document.getElementById('julA').innerText;
+const agoA = document.getElementById('agoA').innerText;
+const setA = document.getElementById('setA').innerText;
+const outA = document.getElementById('outA').innerText;
+const novA = document.getElementById('novA').innerText;
+const dezA = document.getElementById('dezA').innerText;
+
+
+// Bar Chart Example
+var ctx2 = document.getElementById("myBarChart2");
+var myBarChart2 = new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: ["Janeiro", "fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+    datasets: [{
+      label: "Qtd",
+      backgroundColor: "#4e73df",
+      hoverBackgroundColor: "#2e59d9",
+      borderColor: "#4e73df",
+      data: [janA,fevA,marA,abrA,maiA,junA,julA,agoA,setA,outA,novA,dezA],
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'month'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 12
+        },
+        maxBarThickness: 25,
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: 400,
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 16,
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#252323",
+      borderColor: '#252323',
       borderWidth: 1,
       xPadding: 15,
       yPadding: 15,

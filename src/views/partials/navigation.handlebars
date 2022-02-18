@@ -2,22 +2,25 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dados">
                 <div class="sidebar-brand-icon rotate-n-15">
                    
                 </div>
-                <div class="sidebar-brand-text mx-3">ZHAZ<sup> v1.0</sup></div>
+                
+                <div class="sidebar-brand-text mx-3">
+                  <img src="/img/b2w.png" alt="" class="rounded-circle mt-4" style="width: 50px; hight: 50px;"> 
+                  <br>Painel ZHAZ<sup class="text-gray-900"> v 1.0</sup></div>
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider my-0 mt-4">
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="/dados">
+                <a class="nav-link text-gray-900" href="/dados">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Painel</span></a>
             </li>
@@ -27,23 +30,23 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            <div class="sidebar-heading text-gray-900">
                 Informações
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" href="/contratos">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Contratos</span></a>
-            </li>
+            </li>-->
 
             <!-- Nav Item - Pages OS -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Ordens de Serviços</span>
+                    <span class="text-gray-900">Ordens de Serviços</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -75,9 +78,9 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <i class="fas fa-user-astronaut fa-3x"></i>
-                <p class="text-center mb-2"><strong>Dados de acesso:</strong> {{ip}}</p>
-                <p class="text-center mb-2"><strong>Cidade:</strong><br>{{cidade}} - {{regiao}}</p>
+                <i class="fas fa-user-secret fa-2x text-gray-800"></i>
+                <p class="text-center mb-2 text-light"><strong>Dados de acesso:</strong> {{ip}}</p>
+                <p class="text-center mb-2 text-light"><strong>Cidade:</strong><br>{{city}} - {{region}}</p>
             </div>
         </ul>
         <!-- End of Sidebar -->
@@ -126,7 +129,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{email}}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-800 small">{{email}}</span>
                                 <img class="img-profile rounded-circle"
                                     src="/img/uploads/{{img}}">
                             </a>
