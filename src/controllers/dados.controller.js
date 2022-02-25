@@ -81,7 +81,7 @@ const requestIp = require('request-ip');
 
             var date =  new Date();
             console.log("Função Rodou: " + date);
-            setTimeout(run, 300000);
+            setTimeout(run, 900000);
         });
 
     async function ipCliente (dado) {
