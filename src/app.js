@@ -52,6 +52,7 @@ app.get('/', (req,res) => {
     res.redirect('users/signin');
 });
 
+
 //Static
 app.use(express.static('src/public'));
 

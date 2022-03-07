@@ -2,6 +2,7 @@ const {Router} = require('express');
 const { defaults } = require('request');
 const router = Router();
 const multer = require('multer');
+const {isAuthenticated} = require('../helpers/auth');
 
 const {renderSignUpForm, renderSignInForm, signup, signin, logout} = require('../controllers/users.controller')
 
@@ -22,7 +23,7 @@ const upload = multer({
 });
 
 
-router.get('/users/signup', renderSignUpForm);
+router.get('/users/signup', isAuthenticated, renderSignUpForm);
 
 router.post('/users/add', upload.single('imagem'),signup);
 
