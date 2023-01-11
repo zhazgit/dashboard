@@ -4,8 +4,7 @@ const HOST = "localhost";
 const DATABASE = "dashboardadmin";
 const PASSWORD = "JF$3*DKx3"
 
-const MONGODB_URI = (`mongodb+srv://admin:JF$3*DKx3@cluster0.3iwop.mongodb.net/dashboardadmin?retryWrites=true&w=majority`);
-
+const MONGODB_URI = ("mongodb+srv://admin:JF$3*DKx3@cluster0.3iwop.mongodb.net/dashboardadmin?retryWrites=true&w=majority");
 
 
 mongoose.connect(MONGODB_URI, {

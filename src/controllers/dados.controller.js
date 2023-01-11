@@ -20,61 +20,62 @@ const requestIp = require('request-ip');
      var region;
      var countryCode;
      var isp;
+     const url = process.env.URL_API;
     
 
      //Pega dados API a cada 5 minutos.
         setTimeout(async function run() {
             //Axios API
-            data  = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,1');
+            data  = await axios(`${url}1`);
             await formataData(data.data);  
             AGUARDANDO_CHEGADA = await data.data;              
             
-            data1 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,3');
+            data1 = await axios(`${url}3`);
             await formataData(data1.data); 
             AGUARDANDO_VISTORIA = await data1.data;
             
-            data4 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,4');
+            data4 = await axios(`${url}4`);
             await formataData(data4.data);
             EM_VISTORIA = await data4.data;
             
-            data5 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,5');
+            data5 = await axios(`${url}5`);
             await formataData(data5.data); 
             VISTORIADO = await data5.data;
             
-            data6 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,6');
+            data6 = await axios(`${url}6`);
             await formataData(data6.data);
             AGUARDANDO_APROVACAO = await data6.data;
             
-            data7 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,7');
+            data7 = await axios(`${url}7`);
             await formataData(data7.data);
             AGUARDANDO_PECAS = await data7.data;
             
 
-            data8 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,8');
+            data8 = await axios(`${url}8`);
             await formataData(data8.data);
             APROVADO = await data8.data;
             
 
-            data9 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,9');
+            data9 = await axios(`${url}9`);
             await formataData(data9);
             EM_MANUTENCAO = await data9.data;
             
-            data11 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,11');
+            data11 = await axios(`${url}11`);
             await formataData(data11.data);
             MANUTENCAO_CONCLUIDA = await data11.data;
             
 
-            data13 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,13');
+            data13 = await axios(`${url}13`);
             await formataData(data13.data);
             EXPEDICAO = await data13.data; 
             
 
-            data17 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,17');
+            data17 = await axios(`${url}17`);
             await formataData(data17);
             REPROVADO = await data17.data;
             
 
-            data18 = await axios('https://cosmoserp.com/zhaz/aWSPCosmosFBX.aspx?f2117e5dfa7f998f93afd92547d0ba9b,vApiOS,15');
+            data18 = await axios(`${url },15`);
             await formataData(data18.data);
             FINALIZADA = await data18.data;
             
