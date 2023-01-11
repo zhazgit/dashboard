@@ -75,7 +75,7 @@ const requestIp = require('request-ip');
             REPROVADO = await data17.data;
             
 
-            data18 = await axios(`${url },15`);
+            data18 = await axios(`${url }15`);
             await formataData(data18.data);
             FINALIZADA = await data18.data;
             
